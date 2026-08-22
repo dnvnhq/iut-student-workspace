@@ -9,7 +9,7 @@ on:
     paths:
       - .github/workflows/build.yaml
       - dockerfile
-      - bake
+      - bake.hcl
       - scripts/**
       - configurations/**
 

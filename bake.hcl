@@ -2,17 +2,13 @@ variable "VERSION" {
     default = "2026.08.22"
 }
 
-group "release" {
-    targets = ["dev"]
-}
-
 target "_common" {
     context    = "."
     dockerfile = "dockerfile"
     target   = "dev"
 }
 
-target "local-dev" {
+target "local" {
     inherits = ["_common"]
     tags     = [
         "iut-student-workspace:latest",

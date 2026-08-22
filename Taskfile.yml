@@ -5,8 +5,10 @@ version: '3'
 tasks:
   local:build:dev:
     desc: Build dev image locally
+    aliases:
+      - build
     cmds:
-      - docker buildx bake -f bake.hcl local-dev
+      - docker buildx bake -f bake.hcl local
 
   local:compose:down:
     desc: Remove the local Compose stack
