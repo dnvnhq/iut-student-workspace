@@ -17,6 +17,8 @@ tasks:
     desc: Create the local Compose stack
     deps:
       - local:compose:down
+    aliases:
+      - up
     cmds:
       - docker compose up --remove-orphans -d
 
@@ -25,4 +27,4 @@ tasks:
     aliases:
       - term
     cmds:
-      - docker exec -it application /usr/bin/fish
+      - docker exec -it weather-application /usr/bin/fish

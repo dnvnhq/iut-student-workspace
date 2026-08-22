@@ -1,16 +1,46 @@
-name: IUT Weather
+name: iut-weather
 
 services:
   app:
-    container_name: application
+    container_name: weather-application
     image: iut-student-workspace:latest
+    restart: &restart unless-stopped
     ports:
-      - 8080:8080
+      - 8081:8080
       - 5173:5173
     volumes:
       - ./app/:/app
     networks: &networks
       - iut-weather
+
+  postgresql:
+    container_name: weather-postgresql
+    image: postgres:18.6-alpine3.23
+    restart: *restart
+    environment:
+      - POSTGRES_USER=lachargerie
+      - POSTGRES_PASSWORD=lachargerie
+      - POSTGRES_DB=lachargerie
+    ports:
+      - 5434:5432
+    volumes:
+      - weather_postgres_data:/var/lib/postgresql
+    networks: *networks
+
+  redis:
+    container_name: weather-redis
+    image: redis:8.8.2-alpine3.23
+    restart: *restart
+    networks: *networks
+
+  mailpit:
+    container_name: weather-mailpit
+    image: axllent/mailpit:v1.31
+    restart: *restart
+    networks: *networks
+
+volumes:
+  weather_postgres_data:
 
 networks:
   iut-weather:
