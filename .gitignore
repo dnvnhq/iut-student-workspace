@@ -1,11 +1,10 @@
 # Generated student application
-/app/*
-!/app/.gitkeep
+/app/
 
 # Local environment files
 .env
 .env.*
-!.env.example
+!/.env.example
 
 # Docker Compose overrides
 compose.override.yaml
