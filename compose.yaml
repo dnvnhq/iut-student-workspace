@@ -1,0 +1,18 @@
+name: IUT Weather
+
+services:
+  app:
+    container_name: application
+    image: iut-student-workspace:latest
+    ports:
+      - 8080:8080
+      - 5173:5173
+    volumes:
+      - ./app/:/app
+    networks: &networks
+      - iut-weather
+
+networks:
+  iut-weather:
+    name: iut-weather
+    driver: bridge

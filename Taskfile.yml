@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+tasks:
+  local:build:dev:
+    desc: Build dev image locally
+    cmds:
+      - docker buildx bake -f bake.hcl local-dev
+
+  local:compose:down:
+    desc: Remove the local Compose stack
+    cmds:
+      - docker compose down
+
+  local:compose:up:
+    desc: Create the local Compose stack
+    deps:
+      - local:compose:down
+    cmds:
+      - docker compose up --remove-orphans -d
+
+  local:terminal:
+    desc: Open a terminal into the local Compose stack's application container
+    aliases:
+      - term
+    cmds:
+      - docker exec -it application /usr/bin/fish

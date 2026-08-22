@@ -1,0 +1,38 @@
+{
+	frankenphp {
+		num_threads 3
+		max_threads 3
+	}
+}
+
+:8080 {
+	root * public/
+	encode zstd br gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+		Cross-Origin-Opener-Policy "same-origin"
+		-Server
+		-X-Powered-By
+	}
+
+	@sensitive {
+		path /.env* /.git/* /.htaccess /composer.json /composer.lock /package.json /package-lock.json /bun.lock* /artisan *.md
+	}
+	respond @sensitive 404
+
+	@static {
+		path *.css *.js *.mjs *.png *.jpg *.jpeg *.webp *.avif *.svg *.gif *.ico *.woff *.woff2 *.ttf *.eot
+	}
+	header @static Cache-Control "public, max-age=31536000, immutable"
+
+	@html {
+		path / /index.php *.html
+	}
+	header @html Cache-Control "public, max-age=300"
+
+	php_server
+}

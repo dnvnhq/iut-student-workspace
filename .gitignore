@@ -1,0 +1,46 @@
+# Generated student application
+/app/*
+!/app/.gitkeep
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Docker Compose overrides
+compose.override.yaml
+compose.override.yml
+docker-compose.override.yaml
+docker-compose.override.yml
+
+# Editor and IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating-system files
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+.nfs*
+
+# Logs and temporary files
+*.log
+*.tmp
+.cache/
