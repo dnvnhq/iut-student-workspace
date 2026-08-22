@@ -19,7 +19,7 @@ target "local-dev" {
     ]
 }
 
-target "dev" {
+target "release" {
     context    = "."
     dockerfile = "dockerfile"
     target   = "dev"
