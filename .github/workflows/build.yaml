@@ -1,5 +1,12 @@
 name: Build image
 
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
 jobs:
   version:
     runs-on: ubuntu-latest
