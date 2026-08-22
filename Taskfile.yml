@@ -15,16 +15,22 @@ tasks:
     cmds:
       - docker compose -f local/compose.yaml down
 
-  local:compose:up:
-    desc: Create the local Compose stack
+  published:compose:up: &compose-up
+    desc: Create the Compose stack with the published image
+    aliases:
+      - up-pub
     deps:
       - local:compose:down
+    cmds:
+      - docker compose -f local/compose.yaml up --remove-orphans -d
+
+  local:compose:up:
+    <<: *compose-up
+    desc: Create the Compose stack with the local image
     aliases:
       - up
     env:
       IMAGE: iut-student-workspace:latest
-    cmds:
-      - docker compose -f local/compose.yaml up --remove-orphans -d
 
   local:terminal:
     desc: Open a terminal into the local Compose stack's application container
