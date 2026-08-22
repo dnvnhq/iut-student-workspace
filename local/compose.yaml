@@ -3,7 +3,7 @@ name: iut-weather
 services:
   app:
     container_name: weather-application
-    image: iut-student-workspace:latest
+    image: ${IMAGE:-donovanbroquin/iut-student-workspace:latest}
     restart: &restart unless-stopped
     ports:
       - 8081:8080

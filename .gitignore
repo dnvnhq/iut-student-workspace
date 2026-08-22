@@ -1,5 +1,5 @@
 # Generated student application
-/app/
+/local/app/
 
 # Local environment files
 .env
