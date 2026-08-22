@@ -8,6 +8,9 @@ on:
       - main
     paths:
       - dockerfile
+      - bake
+      - scripts/**
+      - configurations/**
 
 jobs:
   version:
