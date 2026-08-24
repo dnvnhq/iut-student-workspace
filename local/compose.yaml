@@ -37,6 +37,8 @@ services:
     container_name: weather-mailpit
     image: axllent/mailpit:v1.31
     restart: *restart
+    ports:
+      - 8025:8025
     networks: *networks
 
 volumes:
