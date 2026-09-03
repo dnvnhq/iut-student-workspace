@@ -30,7 +30,7 @@ This environment provides the modern tools you need to create your application l
 macOS users must install [Homebrew](https://brew.sh) then install Task using [brew](https://taskfile.dev/docs/installation#homebrew).
 
 ### Windows requirements
-Windows users must install WSL 2 and enable Docker Desktop’s WSL 2 integration for their Ubuntu distribution. Keep the project files inside the **WSL filesystem**, not under `/mnt/c/`; otherwise, file access and hot reloading can be painfully slow.
+> Windows users must install WSL 2 and enable Docker Desktop’s WSL 2 integration for their Ubuntu distribution. Keep the project files inside the **WSL filesystem**, not under `/mnt/c/`; otherwise, file access and hot reloading can be painfully slow.
 
 - Open Windows Terminal as an administrator.
 - Run the `wsl --install -d Ubuntu-26.04` command
@@ -44,6 +44,7 @@ Windows users must install WSL 2 and enable Docker Desktop’s WSL 2 integration
 ### Editor extensions
 #### Visual Studio Code
 - [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
 - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 - [Laravel](https://marketplace.visualstudio.com/items?itemName=laravel.vscode-laravel)
 
@@ -55,7 +56,7 @@ The Laravel extension needs the following configuration
 - select Global
 - if override asked, select Yes
 
-> For Windows users, the Docker & Laravel extensions must be installed inside the WSL editor version that appears after CMD + SHIFT + P > WSL: Connect to WSL using Distro and select Ubuntu 26.04
+> For Windows users, the Docker, PHP Intelephense & Laravel extensions must be installed inside the WSL editor version that appears after CMD + SHIFT + P > WSL: Connect to WSL using Distro and select Ubuntu 26.04
 
 ## Prepare the project
 In your environment (macOS or Ubuntu on WSL), create a directory for the project (for example, *iut-weather*).
