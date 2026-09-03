@@ -29,7 +29,7 @@ services:
 
   redis:
     container_name: weather-redis
-    image: redis:8.8.2-alpine3.23
+    image: redis:8.10.1-alpine3.23
     restart: *restart
     networks: *networks
 
