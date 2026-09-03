@@ -26,22 +26,42 @@ This environment provides the modern tools you need to create your application l
     - 6379: [Redis](https://redis.io/solutions/caching/) port
     - 8025: [Mailpit](https://mailpit.axllent.org) SMTP interface
 
+### macOS requirements
+macOS users must install [Homebrew](https://brew.sh) then install Task using [brew](https://taskfile.dev/docs/installation#homebrew).
+
 ### Windows requirements
 Windows users must install WSL 2 and enable Docker Desktop’s WSL 2 integration for their Ubuntu distribution. Keep the project files inside the **WSL filesystem**, not under `/mnt/c/`; otherwise, file access and hot reloading can be painfully slow.
 
 - Open Windows Terminal as an administrator.
-- Run the `wsl --install -d Ubuntu` command
+- Run the `wsl --install -d Ubuntu-26.04` command
 - Restart your computer with the `Restart-Computer` command.
 - Create your Ubuntu user. **Keep the password.**
-- Install [Task](https://taskfile.dev) within Ubuntu
+- Install [Task](https://taskfile.dev) within Ubuntu with [APT](https://taskfile.dev/docs/installation#apt) 
 - Configure Docker Desktop to use the WSL integration: *settings > resources > WSL integration*
 
 > Your project will live **exclusively** inside the WSL Ubuntu
+
+### Editor extensions
+#### Visual Studio Code
+- [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+- [Laravel](https://marketplace.visualstudio.com/items?itemName=laravel.vscode-laravel)
+
+The Laravel extension needs the following configuration
+- open Command Palette (CMD + SHIFT + P)
+- select Laravel: Configure Docker Environment
+- select `weather-application`
+- write /app
+- select Global
+- if override asked, select Yes
+
+> For Windows users, the Docker & Laravel extensions must be installed inside the WSL editor version that appears after CMD + SHIFT + P > WSL: Connect to WSL using Distro and select Ubuntu 26.04
 
 ## Prepare the project
 In your environment (macOS or Ubuntu on WSL), create a directory for the project (for example, *iut-weather*).
 
 ```sh
+cd ~
 mkdir iut-weather
 ```
 
@@ -65,13 +85,13 @@ The `install.sh` command launches the Laravel installer wizard. Select the follo
 
 Your application is now available at [localhost:8081](http://localhost:8081).
 
-## Git - Windows user
+## Git
 You can use any Git provider, but you must use SSH to connect to it.
 
 You can follow the [GitHub authentication guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to create an SSH key for other providers as well.
 
 ### Windows user
-Windows users must use **WSL Ubuntu** to perform Git operations.
+Windows users must use **WSL Ubuntu-26.04** to perform Git operations.
 
 Follow the [GitHub authentication guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), making sure to select the Linux tab.
 
