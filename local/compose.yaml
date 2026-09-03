@@ -9,7 +9,7 @@ services:
       - 8081:8080
       - 5173:5173
     volumes:
-      - ./app/:/app
+      - .:/app
     networks: &networks
       - iut-weather
 
