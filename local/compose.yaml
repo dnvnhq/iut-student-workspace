@@ -18,9 +18,9 @@ services:
     image: postgres:18.6-alpine3.23
     restart: *restart
     environment:
-      - POSTGRES_USER=lachargerie
-      - POSTGRES_PASSWORD=lachargerie
-      - POSTGRES_DB=lachargerie
+      - POSTGRES_USER=iutweather
+      - POSTGRES_PASSWORD=iutweather
+      - POSTGRES_DB=iutweather
     ports:
       - 5434:5432
     volumes:

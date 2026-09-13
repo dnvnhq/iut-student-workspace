@@ -13,11 +13,50 @@ composer global require laravel/installer
 
 # Create the project in /tmp
 cd "$bootstrap_dir"
-laravel new application --bun --no-boost
+laravel new application --bun --no-boost --database=pgsql
 
 # Copy fresh app into /app
 cp -a "$bootstrap_dir/application"/. /app/
 cd /app
+
+# Configure PostgreSQL using the internal Docker network in both environment files.
+for env_file in .env .env.example; do
+    env_tmp="$(mktemp)"
+
+    awk '
+        BEGIN {
+            count = split("DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD", keys, " ")
+            values["DB_CONNECTION"] = "pgsql"
+            values["DB_HOST"] = "postgresql"
+            values["DB_PORT"] = "5432"
+            values["DB_DATABASE"] = "iutweather"
+            values["DB_USERNAME"] = "iutweather"
+            values["DB_PASSWORD"] = "iutweather"
+        }
+        {
+            for (i = 1; i <= count; i++) {
+                key = keys[i]
+                if ($0 ~ "^[[:space:]]*#?[[:space:]]*" key "[[:space:]]*=") {
+                    if (!seen[key]++) print key "=" values[key]
+                    next
+                }
+            }
+            print
+        }
+        END {
+            for (i = 1; i <= count; i++) {
+                key = keys[i]
+                if (!seen[key]) print key "=" values[key]
+            }
+        }
+    ' "$env_file" > "$env_tmp"
+
+    cat "$env_tmp" > "$env_file"
+    rm -f "$env_tmp"
+done
+
+php artisan config:clear
+php artisan migrate --force
 
 # Update Vite config for Docker environment
 vite_config=""

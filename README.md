@@ -84,6 +84,10 @@ The `install.sh` command launches the Laravel installer wizard. Select the follo
 - Do you want to use a starter kit? → **No**
 - Which frontend stack do you want to build on? → **Blade**
 
+If the installer asks whether to run database migrations, select **No**: the script runs them after configuring the database connection.
+
+After creating the Laravel project, `install.sh` configures both `.env` and `.env.example` to use the PostgreSQL container and runs the migrations automatically. The database, username and password are all `iutweather` (local development only). Laravel connects to `postgresql:5432` over the Docker network; database clients on your host machine should use `localhost:5434`.
+
 Your application is now available at [localhost:8081](http://localhost:8081).
 
 ## Git

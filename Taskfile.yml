@@ -29,8 +29,15 @@ tasks:
     desc: Create the Compose stack with the local image
     aliases:
       - up
+    deps:
+      - local:build:dev
     env:
       IMAGE: iut-student-workspace:latest
+    cmds:
+      - rm -rf debug
+      - cp -R local debug
+      - docker compose -f debug/compose.yaml down
+      - docker compose -f debug/compose.yaml up --remove-orphans -d
 
   local:terminal:
     desc: Open a terminal into the local Compose stack's application container
