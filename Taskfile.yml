@@ -10,22 +10,17 @@ tasks:
     cmds:
       - docker buildx bake -f bake.hcl local
 
-  local:compose:down:
-    desc: Remove the local Compose stack
-    cmds:
-      - docker compose -f local/compose.yaml down
-
-  published:compose:up: &compose-up
+  published:compose:up:
     desc: Create the Compose stack with the published image
     aliases:
       - up-pub
-    deps:
-      - local:compose:down
     cmds:
-      - docker compose -f local/compose.yaml up --remove-orphans -d
+      - rm -rf debug-published
+      - cp -R local debug-published
+      - docker compose -f debug-published/compose.yaml down
+      - docker compose -f debug-published/compose.yaml up --remove-orphans -d
 
   local:compose:up:
-    <<: *compose-up
     desc: Create the Compose stack with the local image
     aliases:
       - up
