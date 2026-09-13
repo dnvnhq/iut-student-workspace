@@ -92,6 +92,9 @@ ENV HOME=/home/app \
 USER app
 
 COPY --chmod=755 ./scripts/ /usr/local/bin/
+COPY --chmod=755 ./scripts/alias-bunx.sh /usr/local/bin/bunx
+COPY --chmod=755 ./scripts/alias-bunx.sh /usr/local/bin/npx
 
 EXPOSE 8080
 EXPOSE 5173
+EXPOSE 6274
