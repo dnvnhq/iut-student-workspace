@@ -19,19 +19,32 @@ laravel new application --bun --no-boost --database=pgsql
 cp -a "$bootstrap_dir/application"/. /app/
 cd /app
 
-# Configure PostgreSQL using the internal Docker network in both environment files.
+# Configure PostgreSQL, Redis and Mailpit in both environment files.
 for env_file in .env .env.example; do
     env_tmp="$(mktemp)"
 
     awk '
         BEGIN {
-            count = split("DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD", keys, " ")
+            count = split("DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD REDIS_CLIENT REDIS_HOST REDIS_PASSWORD REDIS_PORT CACHE_STORE QUEUE_CONNECTION SESSION_DRIVER MAIL_MAILER MAIL_SCHEME MAIL_HOST MAIL_PORT MAIL_USERNAME MAIL_PASSWORD", keys, " ")
             values["DB_CONNECTION"] = "pgsql"
             values["DB_HOST"] = "postgresql"
             values["DB_PORT"] = "5432"
             values["DB_DATABASE"] = "iutweather"
             values["DB_USERNAME"] = "iutweather"
             values["DB_PASSWORD"] = "iutweather"
+            values["REDIS_CLIENT"] = "phpredis"
+            values["REDIS_HOST"] = "redis"
+            values["REDIS_PASSWORD"] = "null"
+            values["REDIS_PORT"] = "6379"
+            values["CACHE_STORE"] = "redis"
+            values["QUEUE_CONNECTION"] = "redis"
+            values["SESSION_DRIVER"] = "redis"
+            values["MAIL_MAILER"] = "smtp"
+            values["MAIL_SCHEME"] = "smtp"
+            values["MAIL_HOST"] = "mailpit"
+            values["MAIL_PORT"] = "1025"
+            values["MAIL_USERNAME"] = "null"
+            values["MAIL_PASSWORD"] = "null"
         }
         {
             for (i = 1; i <= count; i++) {

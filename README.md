@@ -11,7 +11,7 @@ This environment provides the modern tools you need to create your application l
 - [Composer](https://getcomposer.org): PHP package manager
 - [Bun](https://bun.com): JavaScript runtime and replacement for Node.js/npm
 - [PostgreSQL](https://www.postgresql.org): the database
-- [Redis](https://redis.io/solutions/caching/): cache and queue
+- [Redis](https://redis.io/solutions/caching/): cache, sessions and queues
 - [Mailpit](https://mailpit.axllent.org): local SMTP server for email development
 
 ## Requirements
@@ -89,6 +89,10 @@ If the installer asks whether to run database migrations, select **No**: the scr
 After creating the Laravel project, `install.sh` configures both `.env` and `.env.example` to use the PostgreSQL container and runs the migrations automatically. The database, username and password are all `iutweather` (local development only). Laravel connects to `postgresql:5432` over the Docker network; database clients on your host machine should use `localhost:5434`.
 
 Your application is now available at [localhost:8081](http://localhost:8081).
+
+The installer also configures Redis at `redis:6379` for cache, sessions and queues, using the PHP Redis extension included in the image. Run `php artisan queue:work` inside the application container to process queued jobs.
+
+Email is configured to use the local Mailpit container at `mailpit:1025` over SMTP without authentication. View captured messages at [localhost:8025](http://localhost:8025).
 
 ## Git
 You can use any Git provider, but you must use SSH to connect to it.
