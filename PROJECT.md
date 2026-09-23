@@ -30,6 +30,21 @@ Enfin, un diagramme *minimal* de la base de données est disponible [ici](https:
 
 Une application peut être rendue avec un fond blanc, des liens bleus et du texte en noir tant que les fonctionnalités sont présentes.
 
+> Pour assurer le fonctionnement du front, le fichier `package.json` est à modifier
+
+```js
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+
+# Deviens
+"scripts": {
+    "build": "vite build",
+    "dev": "vite --host"
+},
+```
+
 ### Données météo
 Les données météo proviendront des APIs gratuites d’[OpenWeather](https://openweathermap.org).
 
