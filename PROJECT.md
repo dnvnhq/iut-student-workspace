@@ -69,7 +69,13 @@ L’application doit intégrer les fonctionnalités suivantes
 ### Authentification
 Chaque utilisateur de l’application doit pouvoir se connecter avec une adresse mail et un mot de passe.
 
-Cette partie doit être gérée par le package [laravel/breeze](https://laravel.com/docs/13.x/starter-kits) et l'option `Blade with Alpine` doit être choisie durant le processus d'installation.
+Cette partie doit être gérée par le package [laravel/breeze](https://laravel.com/docs/11.x/starter-kits) et l'option `Blade with Alpine` doit être choisie durant le processus d'installation.
+
+Lorsqu'il est demandé de lancer `php artisan migrate`, lancer
+
+```shell
+php artisan migrate:fresh
+```
 
 ### Récupération de la météo courante pour une ville
 Les données météo doivent provenir de l’API [/data/2.5/weather](https://openweathermap.org/current) d’[OpenWeather](https://openweathermap.org) et récupérés par l’usage du [client HTTP](https://laravel.com/docs/13.x/http-client) de Laravel.
