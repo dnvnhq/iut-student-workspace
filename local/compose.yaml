@@ -35,7 +35,7 @@ services:
 
   mailpit:
     container_name: weather-mailpit
-    image: axllent/mailpit:v1.31
+    image: axllent/mailpit:v1.32
     restart: *restart
     ports:
       - 8025:8025
