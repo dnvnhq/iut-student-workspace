@@ -15,7 +15,7 @@ Le code ainsi que les commentaires doivent être **impérativement** en anglais.
 > Ainsi, tout code en français ou [franglais](https://fr.wikipedia.org/wiki/Franglais) mènera à une ==**pénalité** de **2 points** sur la **note finale**==.
 
 ### Base de données
-Le projet nécessite une base de données. Afin de simplifier sa gestion, SQLite sera utilisé.
+Le projet nécessite une base de données. Afin de simplifier sa gestion, PosgreSQL sera utilisé.
 
 La gestion de cette dernière (création des tables, ...) doit se faire exclusivement avec les [migrations](https://laravel.com/docs/13.x/migrations) de Laravel.
 
