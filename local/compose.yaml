@@ -29,13 +29,13 @@ services:
 
   redis:
     container_name: weather-redis
-    image: redis:8.10.1-alpine3.23
+    image: redis:8.12.0-alpine3.23
     restart: *restart
     networks: *networks
 
   mailpit:
     container_name: weather-mailpit
-    image: axllent/mailpit:v1.31
+    image: axllent/mailpit:v1.34.0
     restart: *restart
     ports:
       - 8025:8025
